@@ -26,7 +26,11 @@ using namespace std;
 {
   switch(cmd)
   {
-    default:                      return @"???";
+    default:
+      {
+          printf("=== commond not recognized %d\n", cmd);
+          return @"???";
+      }
     case LC_SEGMENT:              return @"LC_SEGMENT";             
     case LC_SYMTAB:               return @"LC_SYMTAB";               
     case LC_SYMSEG:               return @"LC_SYMSEG";              
@@ -304,6 +308,7 @@ using namespace std;
                        location:(uint32_t)location
              segment_command_64:(struct segment_command_64 const *)segment_command_64
 {
+    NSLog(@"====== createLCSegment64Node parent: %@, caption: %@", parent.caption, caption);
   MVNodeSaver nodeSaver;
   MVNode * node = [parent insertChildWithDetails:caption location:location length:segment_command_64->cmdsize saver:nodeSaver];
   
@@ -2133,6 +2138,8 @@ using namespace std;
                       segment_command_64:segment_command_64];
       
       // preserv segment RVA/size for offset lookup
+        NSLog(@"111111 segmentInfo %@, fileOffset %ld, vmaddr %x vmsize %ld", [NSString stringWithFormat:@"%@ (%s)",
+                                                                             caption, string(segment_command_64->segname,16).c_str()], segment_command_64->fileoff + imageOffset, segment_command_64->vmaddr, segment_command_64->vmsize);
       segmentInfo[segment_command_64->fileoff + imageOffset] = make_pair(segment_command_64->vmaddr, segment_command_64->vmsize);
       
       // preserv load segment command info for latter use

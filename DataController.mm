@@ -706,6 +706,7 @@ NSString * const MVStatusTaskTerminated           = @"MVStatusTaskTerminated";
 {
   if (self = [super init]) 
   {
+      _nodeIndex = 0;
     children = [[NSMutableArray alloc] init];
     userInfo = [[NSMutableDictionary alloc] init];
   }
@@ -774,11 +775,14 @@ NSString * const MVStatusTaskTerminated           = @"MVStatusTaskTerminated";
             location:(uint32_t)location 
               length:(uint32_t)length
 {
+    
   MVNode * node = [[MVNode alloc] init];
   node.caption = _caption;
   node.dataRange = NSMakeRange(location,length);
   node.parent = self;
+    node.nodeIndex = _nodeIndex + 1;
   [node.userInfo addEntriesFromDictionary:userInfo];
+    NSLog(@"====== %ld %@ insertChild: %ld %@", _nodeIndex, self.caption, node.nodeIndex, _caption);
   [self insertNode:node]; 
   return node;
 }

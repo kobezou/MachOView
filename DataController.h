@@ -121,6 +121,7 @@ struct MVNodeSaver;
   uint32_t              detailsOffset;
 }
 
+@property (nonatomic)                   NSInteger             nodeIndex;
 @property (nonatomic)                   NSString *            caption;
 @property (nonatomic,weak)      MVNode *              parent;
 @property (nonatomic)                   NSRange               dataRange;
