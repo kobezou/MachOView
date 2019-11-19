@@ -2384,6 +2384,7 @@ struct CompareSectionByName
                                         location:fileOffset
                                           length:sizeofcmds];
     
+      // 读取 Load Commands
     for (uint32_t ncmd = 0; ncmd < ncmds; ++ncmd)
     {
       MATCH_STRUCT(load_command,fileOffset)

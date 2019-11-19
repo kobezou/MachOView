@@ -782,7 +782,12 @@ NSString * const MVStatusTaskTerminated           = @"MVStatusTaskTerminated";
   node.parent = self;
     node.nodeIndex = _nodeIndex + 1;
   [node.userInfo addEntriesFromDictionary:userInfo];
-    NSLog(@"====== %ld %@ insertChild: %ld %@", _nodeIndex, self.caption, node.nodeIndex, _caption);
+    NSMutableString *msg = [NSMutableString stringWithString:@"insertChild === "];
+    for (NSInteger i = 0; i < node.nodeIndex; ++i) {
+        [msg appendString:@"    "];
+    }
+    [msg appendFormat:@"%ld %@; parent: %ld %@", node.nodeIndex, _caption, _nodeIndex, self.caption];
+    NSLog(@"%@", msg);
   [self insertNode:node]; 
   return node;
 }

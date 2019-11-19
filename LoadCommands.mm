@@ -308,7 +308,7 @@ using namespace std;
                        location:(uint32_t)location
              segment_command_64:(struct segment_command_64 const *)segment_command_64
 {
-    NSLog(@"====== createLCSegment64Node parent: %@, caption: %@", parent.caption, caption);
+    NSLog(@"22222 createLCSegment64Node parent: %@, caption: %@", parent.caption, caption);
   MVNodeSaver nodeSaver;
   MVNode * node = [parent insertChildWithDetails:caption location:location length:segment_command_64->cmdsize saver:nodeSaver];
   

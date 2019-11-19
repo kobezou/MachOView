@@ -480,6 +480,7 @@ enum ViewType
   [super windowControllerDidLoadNib:aController];
   
   // fill in initial data sources
+    // 入口在这里...
   [statusText setStringValue:@"Loading..."];
   for (MVLayout * layout in dataController.layouts)
   {
