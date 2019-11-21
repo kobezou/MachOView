@@ -1211,6 +1211,7 @@ using namespace std;
   NSRange range = NSMakeRange(location,0);
   NSString * lastReadHex;
   
+    // 处理了需要动态链接的符号信息，包括符号所在的段、符号名称，符号在符号表中的一些其他信息等
   for (uint32_t nindsym = 0; nindsym < length / sizeof(uint32_t); ++nindsym)
   {
     uint32_t nsect = sections_64.size();

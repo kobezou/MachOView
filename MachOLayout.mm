@@ -170,6 +170,7 @@ using namespace std;
 }
 
 //-----------------------------------------------------------------------------
+// 偏移地址所指向的虚拟内存地址
 - (uint64_t)fileOffsetToRVA64: (uint32_t)offset
 {
   NSParameterAssert([self is64bit] == YES);
@@ -2493,7 +2494,7 @@ struct CompareSectionByName
   [super doMainTasks];
 }
 
-//-----------------------------------------------------------------------------
+//----------------------------------------------------------------------------- 
 - (void)doBackgroundTasks
 {
   NSBlockOperation * linkEditOperation = [NSBlockOperation blockOperationWithBlock:^

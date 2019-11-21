@@ -653,7 +653,7 @@ static AsmFootPrint const fastStubHelperHelperARM =
         /* advance to next instruction */
         fileOffset += cs_insn[i].size;
     }
-    cs_free(cs_insn, disasm_count);
+    cs_free(cs_insn, disasm_count); 
     cs_close(&cs_handle);
     // close last block
     if (symbolName)
